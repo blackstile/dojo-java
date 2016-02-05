@@ -47,7 +47,7 @@ public class Conta {
 	}
 	
 	private void criarParcela(BigDecimal valor){
-		parcelas.add(new Parcela(parcelas.size(), valor));
+		parcelas.add(new Parcela(parcelas.size()+1, valor));
 	}
 
 	public Set<Parcela> getParcelas() {

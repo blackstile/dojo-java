@@ -1,9 +1,6 @@
 package dojo;
 
-import java.util.Set;
-
 import br.com.bluesoft.model.Conta;
-import br.com.bluesoft.model.Parcela;
 import br.com.bluesoft.model.Valor;
 import br.com.bluesoft.model.ValorMinimo;
 import br.com.bluesoft.service.impressora.ConsoleImpressora;
@@ -16,11 +13,14 @@ public class Main {
     	final ImpressoraService impressora  =  new ConsoleImpressora();
     	
     	Conta contaDeLuz = new Conta(1231231, new Valor(300));
-    	Conta contaDeTelefone = new Conta(2324342, new Valor(980), new ValorMinimo(20));
+    	Conta contaDeTelefone = new Conta(2324342, new Valor(98500), new ValorMinimo(20));
     	
-    	impressora.print(contaDeLuz);
-    	impressora.print(contaDeTelefone);
-    	Set<Parcela> parcelas = new ParceladorDeContaPorNumeroDeParcela(4).parcelar(contaDeLuz);
+    	impressora.imprimir(contaDeLuz.toString());
+    	impressora.imprimir(contaDeTelefone.toString());
+    	System.out.println("Parcelando conta de Luz");
+    	new ParceladorDeContaPorNumeroDeParcela(4).parcelar(contaDeLuz);
+    	System.out.println("Parcelando conta de telefone");
+    	new ParceladorDeContaPorNumeroDeParcela(12).parcelar(contaDeTelefone);
     	
     }
 }
